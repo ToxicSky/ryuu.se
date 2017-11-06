@@ -11,14 +11,18 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 // Posts: ----------------------------------------------
 
-Route::get('/posts/{id}', 'PostController@view');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
+    Route::resource('posts', 'Admin\PostController');
+    Route::resource('users', 'Admin\UserController');
+});
+
+Route::resource('posts', 'PostController');
+Route::resource('categories', 'CategoryController');
+Route::resource('comment', 'CommentController');
