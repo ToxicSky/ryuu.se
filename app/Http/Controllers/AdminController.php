@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,10 +19,6 @@ class AdminController extends Controller
      */
     public function posts(Request $request)
     {
-        $posts = Post::get();
 
-        return view('admin.posts.index', [
-            'posts' => $posts,
-        ]);
     }
 }

@@ -1,0 +1,25 @@
+.blog-header {
+    height: $header-height;
+    background-image: url("https://i.imgur.com/Nk3Br7a.jpg");
+    background-position: top;
+    background-attachment: fixed;
+
+    .nav-wrapper {
+        background: $nav-bg;
+        height: $nav-height;
+        margin-top: $nav-position;
+        a {
+            color: #fff;
+        }
+    }
+}
+
+.panel {
+    background: #333334;
+    .panel-heading {
+        background: #5f5f65;
+    }
+    .panel-footer {
+        background: #5f5f65;
+    }
+}

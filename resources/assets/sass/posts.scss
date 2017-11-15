@@ -1,0 +1,16 @@
+.comment {
+    background: $comment-bg;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.pagination {
+    a {
+        cursor: pointer;
+
+        &.current {
+            cursor: default;
+            color: $text-color;
+            text-decoration: none;
+        }
+    }
+}

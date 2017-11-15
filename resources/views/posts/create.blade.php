@@ -10,7 +10,14 @@
                 </div>
 
                 <div class="panel-body">
-                    <form action="{{ route('posts.store') }}" method="post">
+                    @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+                    <form action="{{ route('admin.posts.store') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row form-group">
                             <div class="col-md-6">

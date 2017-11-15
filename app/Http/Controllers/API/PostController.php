@@ -1,23 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Post;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
-class CommentController extends Controller
+class PostController extends Controller
 {
-    /**
-     * @var array
-     */
-    private $_validationRules = [
-        'name'    => 'required|min:3',
-        'comment' => 'required|min:3',
-        'email'   => 'nullable|email',
-    ];
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +15,12 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with(
+            'category',
+            'comments'
+        )->paginate(2);
+
+        return response()->json($posts);
     }
 
     /**
@@ -46,17 +41,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $postId = $request->input('post_id');
-        $data   = $request->validate($this->_validationRules);
-        try {
-            $post = Post::find($request->input('post_id'));
-            $post->comments()->create($data);
-        } catch (Exception $e) {
-            Log::error($e);
-        } finally {
-            $route = route('posts.show', ['id' => $postId]);
-            return redirect($route);
-        }
+        //
     }
 
     /**

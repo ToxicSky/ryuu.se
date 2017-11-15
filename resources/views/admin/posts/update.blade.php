@@ -10,6 +10,13 @@
                 </div>
 
                 <div class="panel-body">
+                    @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     <form action="{{ route('admin.posts.update', [$post->id]) }}" method="post">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}

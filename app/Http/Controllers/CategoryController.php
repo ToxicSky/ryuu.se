@@ -6,7 +6,6 @@ use App\Category;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -14,7 +13,7 @@ class CategoryController extends Controller
      * @var array
      */
     private $rules = [
-        'title' => 'required|unique:categories|max:191',
+        'title' => 'required|max:191|unique:categories',
     ];
 
     public function __construct()
@@ -58,15 +57,10 @@ class CategoryController extends Controller
     {
         $route = route('categories');
         try {
-            $validator = Validator::make($request->all(), $this->rules);
+            $category = new Category;
+            $data     = $request->validate($category->validationRules());
 
-            if ($validator->fails()) {
-                return redirect('post/create')
-                    ->withErrors($validator)
-                    ->withInput();
-            }
-
-            $category = new Category($request->all());
+            $category->fill($data);
             $category->save();
             $route = route('categories.show', ['id' => $category->id]);
         } catch (Exception $e) {

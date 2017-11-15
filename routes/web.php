@@ -11,17 +11,24 @@
 |
  */
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::get('/', 'PostController@index')->name('home');
 
 Auth::routes();
 
 // Posts: ----------------------------------------------
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
-    Route::resource('posts', 'Admin\PostController');
-    Route::resource('users', 'Admin\UserController');
-});
+Route::group(
+    ['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'],
+    function () {
+        Route::get('/', 'AdminController@dashboard')->name('dashboard');
+        Route::resource('posts', 'Admin\PostController');
+        Route::resource('users', 'Admin\UserController');
+    }
+);
 
 Route::resource('posts', 'PostController');
 Route::resource('categories', 'CategoryController');

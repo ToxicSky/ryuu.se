@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Post;
 
@@ -31,15 +32,32 @@ class Tag extends Model
      */
     public function createFromStr(string $str, string $seperator = ',')
     {
+        if (strlen($str) === 0) {
+            return [];
+        }
+
         $tagArray = explode($seperator, $str);
         $tagArray = array_map('trim', $tagArray);
-
-        $newTags = [];
+        $newTags  = [];
         foreach ($tagArray as $tag) {
             $newTag    = self::firstOrCreate(['title' => $tag]);
             $newTags[] = $newTag->id;
         }
 
         return $newTags;
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Collection $collection
+     */
+    public function isChecked(Collection $collection)
+    {
+        foreach ($collection as $tag) {
+            if ($tag->id === $this->id) {
+                return 'checked';
+            }
+        }
+
+        return '';
     }
 }

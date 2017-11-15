@@ -10,7 +10,7 @@
                     <h2>Posts</h2>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="{{ route('posts.create') }}">New</a>
+                            <a href="{{ route('admin.posts.create') }}">New</a>
                         </div>
                     </div>
                 </div>
@@ -21,10 +21,10 @@
                         <div class="col-md-12">
                             <h3>{{ $post->title }}</h3>
                             <div class="col-md-6">
-                                <a href="{{ route('posts.edit', ['id' => $post->id]) }}">Edit</a>
+                                <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}">Edit</a>
                             </div>
                             <div class="col-md-6">
-                                <form action="{{ route('posts.destroy', [$post->id]) }}" method="POST">
+                                <form action="{{ route('admin.posts.destroy', [$post->id]) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button class="btn btn-link">Delete</button>

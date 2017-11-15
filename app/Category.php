@@ -21,4 +21,26 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    /**
+     * Returns an array of rules for validation.
+     *
+     * @param bool $edit
+     * @return array
+     */
+    public function validationRules(bool $edit = false)
+    {
+        $rules = [
+            'title' => 'required|max:191|unique:categories',
+        ];
+
+        if ($edit) {
+            $rules['title'] = sprintf(
+                'required|max:191|unique:categories,%d',
+                $this->id
+            );
+        }
+
+        return $rules;
+    }
 }

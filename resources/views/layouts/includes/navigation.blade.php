@@ -4,7 +4,7 @@
 
         <div class="panel-body">
             <ul class="list-unstyled">
-                <li><a href="{{ route('admin.posts') }}">Posts</a></li>
+                <li><a href="{{ route('admin.posts.index') }}">Posts</a></li>
             </ul>
         </div>
     </div>
