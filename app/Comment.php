@@ -23,4 +23,21 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    /**
+     * Returns an array of rules for validation.
+     *
+     * @return array
+     */
+    public function validationRules()
+    {
+        $rules = [
+            'name'    => 'required',
+            'email'   => 'required|max:191',
+            'comment' => 'required|min:2',
+            'post_id' => 'required|min:1',
+        ];
+
+        return $rules;
+    }
 }

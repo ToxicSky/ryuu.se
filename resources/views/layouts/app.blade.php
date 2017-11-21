@@ -15,8 +15,8 @@
 </head>
 <body>
   <div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="blog-header">
+    <div class="site-bg">
+      <nav class="navbar navbar-default navbar-static-top top-nav">
         <div class="container">
           <div class="nav-wrapper">
             <div class="navbar-header">
@@ -48,14 +48,26 @@
             </div>
           </div>
         </div>
+      </nav>
+      <div class="content">
+        @yield('content')
       </div>
-    </nav>
-    <div class="container">
-      @yield('content')
+      <footer class="footer">
+        {{-- <div class="row"> --}}
+          <div class="col-xs-12">
+            <ul>
+              <li>Some footer text</li>
+            </ul>
+          {{-- </div> --}}
+        </div>
+      </footer>
     </div>
   </div>
 
   <!-- Scripts -->
+  <script>
+    window.collected_archive = {!! $archive !!};
+  </script>
   <script src="{{ asset('js/app.js') }}"></script>
   @yield('scripts')
 </body>

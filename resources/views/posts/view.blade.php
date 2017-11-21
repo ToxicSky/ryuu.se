@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-@if (auth())
+{{-- @if (auth())
 @include('layouts.includes.navigation')
-@endif
-<div class="col-md-8">
+@endif --}}
+<div class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading">{{ $post->title }} <small>({{ $post->category->title }})</small></div>
       <div class="panel-body">
@@ -24,4 +24,5 @@
      </div>
   </div>
 </div>
+<sidebar></sidebar>
 @endsection

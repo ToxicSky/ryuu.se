@@ -73,6 +73,8 @@ class PostController extends Controller
             $post->save();
             $post->tags()->sync($tags);
 
+            Session::forget('archive');
+
             $route = route('admin.posts.show', ['post' => $post->id]);
         } catch (Exception $e) {
             Log::error($e);

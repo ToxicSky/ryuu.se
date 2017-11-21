@@ -1,25 +1,80 @@
-.blog-header {
-    height: $header-height;
-    background-image: url("https://i.imgur.com/Nk3Br7a.jpg");
+.site-bg {
+    height: 100vh;
+    background-image: url('img/cyber-background-circle-equalizer-66203.jpg');
     background-position: top;
     background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: auto;
+}
 
-    .nav-wrapper {
-        background: $nav-bg;
-        height: $nav-height;
-        margin-top: $nav-position;
-        a {
-            color: #fff;
+.top-nav {
+    position: fixed;
+    width: 100vw;
+    padding: 0 50px;
+    background: rgba(0,0,0,0.5);
+    height: $nav-height;
+}
+
+.content {
+    padding-top: calc(#{$nav-height} + 25px);
+}
+.sidebar-wrapper {
+    position: fixed;
+    top: 25vh;
+    left: 25px;
+    .side-nav-item {
+        display: none;
+        border-left: 3px solid;
+        margin-left: 9px;
+        padding-left: 25px;
+        margin-top: -14px;
+        padding-top: 14px;
+
+        &.display {
+            display: block;
         }
     }
 }
 
-.panel {
-    background: #333334;
-    .panel-heading {
-        background: #5f5f65;
-    }
-    .panel-footer {
-        background: #5f5f65;
+.posts {
+    width: 50vw;
+    margin-left: 25vw;
+    font-size: 16px;
+    padding: 25px;
+    background: rgba(0,0,0,0.5);
+    white-space: pre-line;
+
+    > .post {
+        width: 100%;
+        &:not(:last-child) {
+            border-bottom: 1px solid #008;
+        }
     }
 }
+
+// .sidebar-wrapper {
+//     background: $post-bg;
+//     padding: 10px;
+
+//     .archive-month {
+//         margin-left: 25px;
+//     }
+//     .archive-post {
+//         margin-left: 25px;
+//     }
+// }
+
+// Fixes and adjustments
+// .panel {
+//     background: $post-bg;
+//     .panel-heading {
+//         background: #5f5f65;
+//     }
+//     .panel-footer {
+//         background: #5f5f65;
+//     }
+// }
+
+// .footer {
+//     height: 150px;
+// }

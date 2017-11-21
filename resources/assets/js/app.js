@@ -10,6 +10,17 @@ require('./bootstrap');
 require('./prototypes');
 
 window.Vue = require('vue');
+window.queryString = require('query-string');
+window.VueRouteLaravel = require('vue-route-laravel');
+
+var config = {
+    baseroute: '/api/route/',
+    axios: axios,
+    queryString: queryString,
+    csrf_token: document.head.querySelector("[name=csrf-token]").content
+};
+
+Vue.use(VueRouteLaravel, config);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,7 +28,14 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('posts', require('./components/Posts.vue'));
+let comments = Vue.component('comments', require('./components/Comments.vue'));
+Vue.component('posts', require('./components/Posts.vue'), {
+  components: {
+    'comments': comments
+  }
+});
+
+Vue.component('sidebar', require('./components/Sidebar.vue'));
 
 const app = new Vue({
     el: '#app'

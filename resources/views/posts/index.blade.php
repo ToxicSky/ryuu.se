@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-@foreach($posts as $post)
+<posts></posts>
+<sidebar></sidebar>
+{{-- @foreach($posts as $post)
 <div class="col-md-8">
   <div class="panel panel-default">
     <div class="panel-heading">{{ $post->title }} <small>({{ $post->category->title }})</small></div>
@@ -52,5 +54,5 @@
      </div>
   </div>
 </div>
-@endforeach
+@endforeach --}}
 @endsection
