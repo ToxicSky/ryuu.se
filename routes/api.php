@@ -17,7 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/api/route/{name}', 'API\RouteController@index');
+Route::get('route/{name}', 'API\RouteController@index');
+Route::group(['as' => 'api.'], function () {
+    Route::resource('posts', 'API\PostController');
+    Route::resource('comments', 'API\CommentController');
+    Route::resource('categories', 'API\CategoryController');
 
-Route::resource('posts', 'API\PostController');
-Route::resource('comments', 'API\CommentController');
+    Route::get(
+        'tags/most-used', 'API\TagController@mostUsed'
+    )->name('tags.most_used');
+});

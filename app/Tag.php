@@ -2,9 +2,9 @@
 
 namespace App;
 
+use App\Post;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Post;
 
 class Tag extends Model
 {

@@ -17,7 +17,8 @@ class PostController extends Controller
     {
         $posts = Post::with(
             'category',
-            'comments'
+            'comments',
+            'tags'
         )->paginate(2);
 
         return response()->json($posts);

@@ -1,20 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Post;
+use App\Category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth')->except(
-            'index', 'show'
-        );
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
-        return view('posts.index', [
-            'posts' => $posts,
-        ]);
+        $categories = Category::get();
+
+        return response()->json($categories);
     }
 
     /**
@@ -35,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -46,54 +38,51 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        $post->load('comments', 'category', 'tags');
-        return view('posts.view', [
-            'post' => $post,
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-
+        //
     }
 }

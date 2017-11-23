@@ -1,7 +1,11 @@
 <template>
   <div class="posts">
     <div class="post" v-for="post of posts">
-      <h2>{{ post.title }} <small>({{ post.category.title }})</small></h2>
+      <h2><a v-bind:href="'/posts/' + post.id">{{ post.title }}</a> <small>({{ post.category.title }})</small></h2>
+      <div class="time">
+        <span class="created">{{ moment(post.created_at).format('Y-MM-DD HH:mm') }}</span>
+        <span class="updated" v-if="moment(post.created_at) !== moment(post.updated_at)">(Edited {{ moment(post.updated_at).format('Y-MM-DD HH:mm') }})</span>
+      </div>
       <p>{{ post.body }}</p>
       <div>
         <div>
@@ -11,11 +15,7 @@
         </div>
       </div>
       <div>
-        <div>Created: {{ post.created_at }}</div>
-        <div>Updated: {{ post.updated_at }}</div>
-      </div>
-      <div>
-        <comments v-bind:post_id="post.id" ></comments>
+        <comments :post_id="post.id" :post_comments="false" ></comments>
       </div>
     </div>
     <div class="pagination">
@@ -31,6 +31,7 @@ export default {
   props: ['comments'],
   data () {
     return {
+      moment: window.moment,
       posts: [],
       page: 1,
       paginate: {

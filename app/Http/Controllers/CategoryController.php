@@ -31,7 +31,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
-
         return view('categories.index', [
             'categories' => $categories,
         ]);
@@ -78,7 +77,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $category->load('posts', 'posts.tags');
+
+        return view('', ['category' => $category])
     }
 
     /**

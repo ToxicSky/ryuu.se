@@ -33,3 +33,4 @@ Route::group(
 Route::resource('posts', 'PostController');
 Route::resource('categories', 'CategoryController');
 Route::resource('comment', 'CommentController');
+Route::resource('tags', 'TagController');

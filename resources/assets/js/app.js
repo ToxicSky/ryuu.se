@@ -12,6 +12,7 @@ require('./prototypes');
 window.Vue = require('vue');
 window.queryString = require('query-string');
 window.VueRouteLaravel = require('vue-route-laravel');
+window.moment = require('moment');
 
 var config = {
     baseroute: '/api/route/',
@@ -30,6 +31,12 @@ Vue.use(VueRouteLaravel, config);
 
 let comments = Vue.component('comments', require('./components/Comments.vue'));
 Vue.component('posts', require('./components/Posts.vue'), {
+  components: {
+    'comments': comments
+  }
+});
+
+Vue.component('post', require('./components/Post.vue'), {
   components: {
     'comments': comments
   }

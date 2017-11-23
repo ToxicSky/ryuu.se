@@ -11431,16 +11431,18 @@ button.close {
 }
 
 .sidebar-wrapper .side-nav-item {
+  height: 0px;
   display: none;
   border-left: 3px solid;
   margin-left: 9px;
   padding-left: 25px;
   margin-top: -14px;
-  padding-top: 14px;
 }
 
 .sidebar-wrapper .side-nav-item.display {
+  height: auto;
   display: block;
+  padding-top: 14px;
 }
 
 .posts {
@@ -11456,7 +11458,73 @@ button.close {
   width: 100%;
 }
 
+.posts > .post > h2 > a {
+  color: #fff;
+}
+
 .posts > .post:not(:last-child) {
-  border-bottom: 1px solid #008;
+  border-bottom: 1px solid #26708e;
+}
+
+.posts > .post .time {
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.new-comment .comment-input {
+  width: 49%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 10px;
+}
+
+.new-comment .comment-input > input {
+  outline: none;
+  width: 100%;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.77);
+  padding: 10px;
+}
+
+.new-comment .comment-content {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+.new-comment .comment-content > textarea {
+  outline: none;
+  width: 98%;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.77);
+  padding: 10px;
+}
+
+.new-comment .comment-submit-btn {
+  padding: 10px;
+}
+
+.new-comment .comment-submit-btn > button {
+  background: rgba(0, 0, 0, 0.77);
+  outline: none;
+  padding: 10px 15px;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+.comments {
+  padding: 25px;
+}
+
+.comments > .comment {
+  border-left: 3px solid #26708e;
+  padding: 0 10px;
+}
+
+.comments > .comment:not(:last-child) {
+  margin-bottom: 15px;
 }
 

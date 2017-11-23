@@ -20,7 +20,12 @@ class CommentController extends Controller
             return response()->json([]);
         }
 
-        $comments = Comment::where('post_id', $postId)->get();
+        $comments = Comment::where(
+            'post_id', $postId
+        )->orderBy(
+            'created_at', 'desc'
+        )->get();
+
         return response()->json($comments);
     }
 
@@ -46,9 +51,11 @@ class CommentController extends Controller
         $data    = $request->validate($comment->validationRules());
 
         $comment->fill($data);
-        $comment->save();
+        if ($comment->save()) {
+            return response()->json([], 201);
+        }
 
-        return response()->json([], 200);
+        return response()->json([], 400);
     }
 
     /**

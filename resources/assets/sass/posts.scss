@@ -1,17 +1,78 @@
-// .comment {
-//     background: $comment-bg;
-//     padding: 10px 20px;
-//     border-radius: 10px;
-//     margin: 25px 0;
-// }
-// .pagination {
-//     a {
-//         cursor: pointer;
+.posts {
+    width: 50vw;
+    margin-left: 25vw;
+    font-size: 16px;
+    padding: 25px;
+    background: rgba(0,0,0,0.5);
+    white-space: pre-line;
 
-//         &.current {
-//             cursor: default;
-//             color: $text-color;
-//             text-decoration: none;
-//         }
-//     }
-// }
+    > .post {
+        width: 100%;
+        > h2 {
+            > a {
+                color: $text-color;
+            }
+        }
+        &:not(:last-child) {
+            border-bottom: 1px solid #26708e;
+        }
+
+        .time {
+            padding: 15px 0;
+            font-size: 14px;
+        }
+    }
+}
+
+.new-comment {
+    .comment-input {
+        width: 49%;
+        display: inline-flex;
+        padding: 10px;
+        > input {
+            outline: none;
+            width: 100%;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.77);
+            padding: 10px;
+        }
+    }
+
+    .comment-content {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        > textarea {
+            outline: none;
+            width: 98%;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.77);
+            padding: 10px;
+        }
+    }
+
+    .comment-submit-btn {
+        padding: 10px;
+        > button {
+            background: rgba(0,0,0,0.77);
+            outline: none;
+            padding: 10px 15px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+    }
+}
+
+.comments {
+    padding: 25px;
+
+    >.comment {
+        border-left: 3px solid #26708e;
+        padding: 0 10px;
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+}
